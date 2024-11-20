@@ -1,7 +1,6 @@
 import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
 import { Lucia } from 'lucia';
 
-import { serverEnvs } from '@/env/server';
 import { db } from '@/services/db';
 import { sessions, users } from '@/services/db/schema';
 
@@ -10,7 +9,10 @@ const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
 export const lucia = new Lucia(adapter, {
     sessionCookie: {
         attributes: {
-            secure: serverEnvs.NODE_ENV === 'production',
+            // secure: serverEnvs.NODE_ENV === 'production',
+            secure: false,
+            domain: '54.251.84.200',
+            sameSite: 'lax'
         },
     },
     getUserAttributes: attributes => {
