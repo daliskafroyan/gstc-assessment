@@ -7,11 +7,11 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/example
-      - NODE_ENV=production
+      - NODE_ENV=development
       - NEXT_PUBLIC_DOMAIN=54.251.84.200
       - EMAIL_PROVIDER=console
       - EMAIL_FROM=Example <hey@example.com>
-      - STANDALONE=1
+      - STANDALONE=0
     logging:
       driver: "json-file"
       options:
